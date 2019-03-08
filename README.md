@@ -1,5 +1,5 @@
 # carbon
-[image-tile-server](https://github.com/hfu/image-tile-server) to be integrated with [onyx](https://github.com/un-verctor-tile-toolkit/onyx)
+[image-tile-server](https://github.com/hfu/image-tile-server) to be integrated with [onyx](https://github.com/un-vector-tile-toolkit/onyx)
 
 # install
 ```console
