@@ -6,6 +6,7 @@
 git clone git@github.com:hfu/carbon
 cd carbon
 npm install
+vi config/default.hjson
 ```
 
 # use
