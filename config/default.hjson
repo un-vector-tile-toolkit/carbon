@@ -1,0 +1,7 @@
+{
+  htdocsPath: htdocs
+  stylePath: ./config/style.json
+  spriteJsonPath: ./config/sprite.json
+  spritePngPath: ./config/sprite.png
+  port: 8836
+}

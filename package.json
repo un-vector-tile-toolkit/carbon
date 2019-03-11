@@ -1,0 +1,31 @@
+{
+  "name": "carbon",
+  "version": "1.0.0",
+  "description": "[image-tile-server](https://github.com/hfu/image-tile-server) to be integrated with [onyx](https://github.com/un-vector-tile-toolkit/onyx)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hfu/carbon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/hfu/carbon/issues"
+  },
+  "homepage": "https://github.com/hfu/carbon#readme",
+  "dependencies": {
+    "@mapbox/mapbox-gl-native": "^4.1.0",
+    "@mapbox/tilebelt": "^1.0.1",
+    "better-queue": "^3.8.10",
+    "config": "^3.0.1",
+    "express": "^4.16.4",
+    "hjson": "^3.1.2",
+    "request": "^2.88.0",
+    "sharp": "^0.21.3",
+    "vt-pbf": "^3.1.1"
+  }
+}
