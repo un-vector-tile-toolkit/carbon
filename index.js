@@ -114,48 +114,56 @@ const getFont = async (url) => {
   })
 }
 
-const map = new mbgl.Map({
-  request: (req, cb) => {
-    console.log(req.url)
-    switch(req.kind) {
-      case 6:
-        fs.readFile(spriteJsonPath, (err, data) => {
-          if (err) cb(err)
-          cb(null, createResponse(data))
-        })
-        break
-      case 5:
-        fs.readFile(spritePngPath, (err, data) => {
-          if (err) cb(err)
-          cb(null, createResponse(data))
-        })
-        break
-      case 4:
-        getFont(req.url).then(data => {
-          cb(null, createResponse(data))
-        })
-        break
-      case 3:
-        getTile(req.url).then(tile => {
-          cb(null, createResponse(tile))
-        })
-        break
-      default:
-    }
+const mbglRequestQueue = new Queue((req, cb) => {
+  console.log(req.url)
+  switch(req.kind) {
+    case 6:
+      fs.readFile(spriteJsonPath, (err, data) => {
+        if (err) cb(err)
+        cb(null, data)
+      })
+      break
+    case 5:
+      fs.readFile(spritePngPath, (err, data) => {
+        if (err) cb(err)
+        cb(null, data)
+      })
+      break
+    case 4:
+      getFont(req.url).then(data => {
+        cb(null, data)
+      })
+      break
+    case 3:
+      getTile(req.url).then(tile => {
+        cb(null, tile)
+      })
+      break
+    default:
   }
 })
-
-map.load(require(stylePath))
 
 const tileQueue = new Queue((r, cb) => {
   const [t, z, x, y] = [r.t, r.z, r.x, r.y]
   const center = [ tile2long(x + 0.5, z), tile2lat(y + 0.5, z) ]
+
+  const map = new mbgl.Map({
+    request: (req, cb) => {
+      mbglRequestQueue.push(req, (err, data) => {
+        if (err) cb(err)
+        cb(null, createResponse(data))
+      })
+    }
+  })
+
+  map.load(require(stylePath))
   map.render({
     zoom: z,
     center: center,
     width: z > 2 ? 1024 : 512,
     height: z > 2 ? 1024 : 512
   }, (err, buffer) => {
+    map.release()
     if (err) return cb(err)
     let image = sharp(buffer, {
       raw: {
