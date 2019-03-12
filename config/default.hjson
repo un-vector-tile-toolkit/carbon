@@ -1,7 +1,13 @@
 {
   htdocsPath: htdocs
-  stylePath: ./config/style.json
+  stylePath: /Users/hfu/macrostyle/style.json
   spriteJsonPath: ./config/sprite.json
   spritePngPath: ./config/sprite.png
   port: 8836
+  mbtilesDir: ../produce-320/mbtiles
+  defaultZ: 6
+  tz: {
+    tapioca: 6
+  }
+  fontsDir: /Users/hfu/spinel/fonts
 }

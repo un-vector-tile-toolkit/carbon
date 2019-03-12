@@ -19,6 +19,7 @@
   "homepage": "https://github.com/hfu/carbon#readme",
   "dependencies": {
     "@mapbox/mapbox-gl-native": "^4.1.0",
+    "@mapbox/mbtiles": "^0.10.0",
     "@mapbox/tilebelt": "^1.0.1",
     "better-queue": "^3.8.10",
     "config": "^3.0.1",
