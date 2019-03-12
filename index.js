@@ -88,6 +88,8 @@ const getTile = (url) => {
           resolve(zlib.gunzipSync(tile))
         }
       })
+    }).catch(e => {
+      resolve(emptyTile)
     })
   })
 }

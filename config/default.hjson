@@ -1,13 +1,13 @@
 {
   htdocsPath: htdocs
-  stylePath: /Users/hfu/macrostyle/style.json
-  spriteJsonPath: ./config/sprite.json
-  spritePngPath: ./config/sprite.png
+  stylePath: ../macrostyle/style.json
+  spriteJsonPath: ../unite-sprite/sprite.json
+  spritePngPath: ../unite-sprite/sprite.png
   port: 8836
-  mbtilesDir: ../produce-320/mbtiles
+  mbtilesDir: ../spinel/mbtiles/tapioca
   defaultZ: 6
   tz: {
     tapioca: 6
   }
-  fontsDir: /Users/hfu/spinel/fonts
+  fontsDir: ../spinel/fonts
 }
