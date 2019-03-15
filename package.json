@@ -4,6 +4,7 @@
   "description": "[image-tile-server](https://github.com/hfu/image-tile-server) to be integrated with [onyx](https://github.com/un-vector-tile-toolkit/onyx)",
   "main": "index.js",
   "scripts": {
+    "Xvfb": "nohup Xvfb :1 -screen 0 1024x768x24 &",
     "serve": "xvfb-run --server-args=\"-screen 0 1024x768x24\" node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
