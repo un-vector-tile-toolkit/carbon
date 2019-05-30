@@ -15,6 +15,7 @@ vi config/default.hjson
 # use
 ```console
 vi config/default.hjson
+npm run-script Xvfb
 ./pmstart.sh
 # ...
 ./pmstop.sh

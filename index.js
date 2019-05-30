@@ -19,6 +19,7 @@ const port = config.get('port')
 const mbtilesDir = config.get('mbtilesDir')
 const defaultZ = config.get('defaultZ')
 const fontsDir = config.get('fontsDir')
+const wideRenderZoom = config.get('wideRenderZoom')
 
 const tile2long = (x, z) => {
   return x / 2 ** z * 360 - 180
@@ -172,23 +173,19 @@ const tileQueue = new Queue((r, cb) => {
     map.render({
       zoom: z,
       center: center,
-      width: z > 2 ? 1024 : 512,
-      height: z > 2 ? 1024 : 512
-      //width: 512,
-      //height: 512
+      width: z > wideRenderZoom ? 1024 : 512,
+      height: z > wideRenderZoom ? 1024 : 512
     }, (err, buffer) => {
       maps.release(map)
       if (err) return cb(err)
       let image = sharp(buffer, {
         raw: {
-          width: z > 2 ? 1024 : 512,
-          height: z > 2 ? 1024 : 512,
-          //width: 512,
-          //height: 512,
+          width: z > wideRenderZoom ? 1024 : 512,
+          height: z > wideRenderZoom ? 1024 : 512,
           channels: 4
         }
       })
-      if (z > 2) {
+      if (z > wideRenderZoom) {
         image = image.extract({
           left: 256, top: 256, width: 512, height: 512
         })
@@ -196,7 +193,7 @@ const tileQueue = new Queue((r, cb) => {
       cb(null, image)
     })
   })
-}, { concurrent: 6 })
+}, { concurrent: 2 })
 
 const app = express()
 app.use(express.static(htdocsPath))

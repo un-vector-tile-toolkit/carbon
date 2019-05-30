@@ -10,4 +10,5 @@
     tapioca: 6
   }
   fontsDir: ../spinel/fonts
+  wideRenderZoom: 4 # original = 2
 }
